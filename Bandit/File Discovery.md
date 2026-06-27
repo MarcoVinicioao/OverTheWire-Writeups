@@ -16,6 +16,9 @@ Durante varios niveles de OverTheWire Bandit fue necesario localizar archivos ut
 | Buscar por permisos         | `find . -perm -4000`   |
 | Buscar archivos ejecutables | `find . -executable`   |
 | Excluir ejecutables         | `find . ! -executable` |
+| Buscar texto dentro de un archivo | `grep "texto" archivo`|
+| Buscar una palabra en varios archivos | `grep "texto" *`|
+
 
 
 # Identificación de archivos por tipo
