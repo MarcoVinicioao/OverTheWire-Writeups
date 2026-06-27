@@ -5,6 +5,16 @@
 En este nivel se introducen dos conceptos clave en administración de sistemas y análisis forense: el manejo de **hexdumps** y la **descompresión encadenada de archivos**. El archivo proporcionado no contiene directamente texto legible, sino una representación hexadecimal de datos comprimidos varias veces.
 
 ---
+| Objetivo | Comando |
+|----------|----------|
+| Crear directorio temporal seguro | `mktemp -d` |
+| Copiar archivos | `cp archivo destino` |
+| Mover o renombrar archivos | `mv origen destino` |
+| Convertir hexdump a binario | `xxd -r archivo` |
+| Ver tipo de archivo | `file archivo` |
+| Extraer archivos tar | `tar -xf archivo.tar` |
+| Descomprimir gzip | `gzip -d archivo.gz` |
+| Descomprimir bzip2 | `bzip2 -d archivo.bz2` |
 
 ## Problema
 
