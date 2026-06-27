@@ -27,6 +27,14 @@ Durante varios niveles de **OverTheWire Bandit** fue necesario localizar archivo
 | Codificar datos en Base64 | `base64 archivo` |
 | Decodificar datos en Base64 | `base64 -d archivo` |
 | Traducir o sustituir caracteres | `tr 'origen' 'destino'` |
+| Crear directorio temporal seguro | `mktemp -d` |
+| Copiar archivos | `cp archivo destino` |
+| Mover o renombrar archivos | `mv origen destino` |
+| Convertir hexdump a binario | `xxd -r archivo` |
+| Ver tipo de archivo | `file archivo` |
+| Extraer archivos tar | `tar -xf archivo.tar` |
+| Descomprimir gzip | `gzip -d archivo.gz` |
+| Descomprimir bzip2 | `bzip2 -d archivo.bz2` |
 ---
 
 # Identificación de archivos por tipo
