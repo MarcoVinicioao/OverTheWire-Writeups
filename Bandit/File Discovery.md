@@ -88,3 +88,56 @@ Durante una auditoría de seguridad es habitual utilizar `find` para localizar a
 ## Conclusión
 
 El comando `file` permite identificar rápidamente el tipo de un archivo sin necesidad de inspeccionar manualmente su contenido, siendo una herramienta útil durante procesos de enumeración en Linux.
+
+
+
+
+## Búsqueda de archivos por tamaño
+
+### Problema
+
+La contraseña se encontraba almacenada en un archivo que cumplía las siguientes características:
+
+* Legible para humanos (human-readable).
+* Tamaño de **1033 bytes**.
+* No ejecutable.
+
+### Metodología
+
+En lugar de recorrer manualmente todos los directorios, se utilizó el comando `find` para localizar únicamente los archivos que cumplieran con las características indicadas.
+
+### Comando utilizado
+
+```bash
+find . -type f -size 1033c ! -executable
+```
+
+### Explicación
+
+* `.`: inicia la búsqueda desde el directorio actual.
+* `-type f`: limita la búsqueda únicamente a archivos.
+* `-size 1033c`: busca archivos cuyo tamaño sea exactamente 1033 bytes.
+* `! -executable`: excluye archivos con permisos de ejecución.
+
+El comando devolvió la siguiente ruta:
+
+```text
+./maybehere07/.file2
+```
+
+Posteriormente se visualizó su contenido mediante:
+
+```bash
+cat ./maybehere07/.file2
+```
+
+### Conceptos aprendidos
+
+* Búsqueda de archivos utilizando atributos específicos.
+* Filtrado por tamaño.
+* Exclusión de archivos ejecutables.
+* Enumeración eficiente mediante `find`.
+
+### Aplicación en Pentesting
+
+Durante una auditoría de seguridad es frecuente localizar archivos sensibles utilizando atributos como tamaño, permisos, propietario o tipo. Dominar `find` permite reducir considerablemente el tiempo de enumeración y encontrar información relevante de manera eficiente.
