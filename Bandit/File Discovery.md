@@ -26,6 +26,7 @@ Durante varios niveles de **OverTheWire Bandit** fue necesario localizar archivo
 | Contar repeticiones de líneas | `uniq -c` |
 | Codificar datos en Base64 | `base64 archivo` |
 | Decodificar datos en Base64 | `base64 -d archivo` |
+| Traducir o sustituir caracteres | `tr 'origen' 'destino'` |
 ---
 
 # Identificación de archivos por tipo
@@ -322,5 +323,64 @@ Base64 es un formato muy común en aplicaciones web, APIs, tokens, archivos de c
 
 El comando `base64` permite codificar y decodificar información de manera sencilla. Aunque Base64 puede ocultar el contenido a simple vista, **no proporciona seguridad**, ya que cualquier persona puede recuperar el texto original utilizando la opción `-d`.
 
+
+# Sustitución de caracteres con ROT13 (`tr`)
+
+## Introducción
+
+En este nivel se utilizó por primera vez el comando `tr` (*translate*), una herramienta que permite reemplazar o eliminar caracteres de la entrada estándar. En este caso, se empleó para descifrar un texto codificado con **ROT13**, un algoritmo que rota las letras del alfabeto 13 posiciones.
+
+---
+
+## Problema
+
+La contraseña del siguiente nivel se encontraba almacenada en el archivo `data.txt`, donde todas las letras minúsculas (`a-z`) y mayúsculas (`A-Z`) habían sido rotadas 13 posiciones mediante el algoritmo **ROT13**.
+
+## Metodología
+
+Se utilizó el comando `tr` para traducir cada letra del alfabeto por su correspondiente desplazada 13 posiciones, recuperando así el texto original.
+
+### Comando utilizado
+
+```bash
+cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+```
+
+También puede ejecutarse sin `cat` utilizando redirección:
+
+```bash
+tr 'A-Za-z' 'N-ZA-Mn-za-m' < data.txt
+```
+
+### Explicación
+
+* `cat data.txt`: muestra el contenido del archivo.
+* `|`: envía la salida al siguiente comando.
+* `tr`: traduce caracteres de la entrada estándar.
+* `'A-Za-z'`: conjunto de caracteres originales.
+* `'N-ZA-Mn-za-m'`: conjunto de caracteres desplazados 13 posiciones (ROT13).
+
+## Resultado
+
+```text
+<contraseña_del_siguiente_nivel>
+```
+
+> Sustituye `<contraseña_del_siguiente_nivel>` por la contraseña obtenida al ejecutar el comando.
+
+## Conceptos aprendidos
+
+* Uso del comando `tr` para traducir caracteres.
+* Funcionamiento del algoritmo ROT13.
+* Uso de tuberías (`|`) y redirección (`<`).
+* Diferencia entre una sustitución de caracteres y un proceso de cifrado.
+
+## Aplicación en Pentesting
+
+El comando `tr` es útil para transformar texto durante tareas de análisis y automatización. Puede utilizarse para convertir mayúsculas a minúsculas, eliminar caracteres, sustituir símbolos o decodificar transformaciones simples como ROT13 presentes en retos CTF o datos ofuscados.
+
+## Conclusión
+
+El comando `tr` permite realizar sustituciones de caracteres de forma rápida y sencilla. Aunque ROT13 modifica el texto para hacerlo menos legible, **no constituye un mecanismo de cifrado seguro**, ya que aplicar nuevamente ROT13 recupera el contenido original.
 
 
