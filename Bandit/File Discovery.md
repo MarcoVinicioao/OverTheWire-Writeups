@@ -8,22 +8,22 @@ Durante varios niveles de **OverTheWire Bandit** fue necesario localizar archivo
 
 ## Comandos de referencia
 
-| Objetivo                              | Comando                |
-| ------------------------------------- | ---------------------- |
-| Buscar archivos                       | `find . -type f`       |
-| Buscar directorios                    | `find . -type d`       |
-| Buscar por tamaño                     | `find . -size 1033c`   |
-| Buscar por usuario                    | `find . -user usuario` |
-| Buscar por grupo                      | `find . -group grupo`  |
-| Buscar por permisos                   | `find . -perm -4000`   |
-| Buscar archivos ejecutables           | `find . -executable`   |
-| Excluir ejecutables                   | `find . ! -executable` |
-| Buscar texto dentro de un archivo     | `grep "texto" archivo` |
-| Buscar una palabra en varios archivos | `grep "texto" *`       |
-| Ordenar líneas de un archivo          | `sort archivo`         |
-| Mostrar líneas únicas                 | `uniq -u`              |
-| Contar repeticiones de líneas         | `uniq -c`              |
-
+| Objetivo | Comando |
+|----------|----------|
+| Buscar archivos | `find . -type f` |
+| Buscar directorios | `find . -type d` |
+| Buscar por tamaño | `find . -size 1033c` |
+| Buscar por usuario | `find . -user usuario` |
+| Buscar por grupo | `find . -group grupo` |
+| Buscar por permisos | `find . -perm -4000` |
+| Buscar archivos ejecutables | `find . -executable` |
+| Excluir ejecutables | `find . ! -executable` |
+| Buscar texto dentro de un archivo | `grep "texto" archivo` |
+| Buscar una palabra en varios archivos | `grep "texto" *` |
+| Extraer cadenas legibles de un archivo binario | `strings archivo` |
+| Ordenar líneas de un archivo | `sort archivo` |
+| Mostrar líneas únicas | `uniq -u` |
+| Contar repeticiones de líneas | `uniq -c` |
 ---
 
 # Identificación de archivos por tipo
