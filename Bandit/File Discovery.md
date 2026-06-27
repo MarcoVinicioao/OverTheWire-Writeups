@@ -213,3 +213,59 @@ Durante una auditoría de seguridad es habitual utilizar herramientas como `find
 # Conclusión
 
 Las herramientas `find`, `file`, `grep`, `sort` y `uniq` son fundamentales para la administración de sistemas Linux y el pentesting. Su uso permite localizar archivos por atributos, identificar su tipo, buscar información específica y analizar grandes volúmenes de datos de manera eficiente, reduciendo el tiempo necesario durante la fase de enumeración.
+
+
+
+
+# Identificación de cadenas legibles (`strings`)
+
+## Introducción
+
+En este nivel se utilizó por primera vez el comando `strings`, una herramienta que permite extraer las cadenas de texto legibles contenidas en archivos binarios. Es especialmente útil cuando un archivo contiene datos no legibles, pero incluye fragmentos de texto que pueden ser de interés.
+
+---
+
+## Problema
+
+La contraseña del siguiente nivel se encontraba almacenada en el archivo `data.txt`, dentro de una de las pocas cadenas legibles y precedida por varios caracteres `=`.
+
+## Metodología
+
+Como el archivo contenía principalmente datos binarios, se utilizó `strings` para extraer únicamente el texto legible. Posteriormente, se filtró la salida con `grep` para localizar las líneas que contenían varios signos `=`.
+
+### Comando utilizado
+
+```bash
+strings data.txt | grep "=="
+```
+
+### Explicación
+
+* `strings data.txt`: extrae las cadenas de texto legibles del archivo.
+* `|`: envía la salida del primer comando al siguiente.
+* `grep "=="`: busca las líneas que contienen varios caracteres `=`.
+
+## Resultado
+
+```text
+========== <contraseña_del_siguiente_nivel>
+```
+
+> Sustituye `<contraseña_del_siguiente_nivel>` por la contraseña obtenida al ejecutar el comando.
+
+## Conceptos aprendidos
+
+* Uso del comando `strings` para extraer texto de archivos binarios.
+* Filtrado de resultados mediante `grep`.
+* Combinación de comandos utilizando tuberías (`|`).
+* Identificación de información útil dentro de archivos binarios.
+
+## Aplicación en Pentesting
+
+El comando `strings` es ampliamente utilizado durante procesos de análisis forense y pentesting para inspeccionar ejecutables, archivos binarios, volcados de memoria (*memory dumps*) y otros archivos que pueden contener credenciales, rutas, nombres de funciones, mensajes de error o información sensible sin necesidad de desensamblar el archivo.
+
+## Conclusión
+
+El comando `strings` permite extraer rápidamente información legible de archivos binarios. Combinado con herramientas como `grep`, facilita la localización de datos específicos durante tareas de análisis y enumeración en sistemas Linux.
+
+
