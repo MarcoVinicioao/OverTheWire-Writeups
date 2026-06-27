@@ -18,6 +18,11 @@ Durante varios niveles de OverTheWire Bandit fue necesario localizar archivos ut
 | Excluir ejecutables         | `find . ! -executable` |
 | Buscar texto dentro de un archivo | `grep "texto" archivo`|
 | Buscar una palabra en varios archivos | `grep "texto" *`|
+| Mostrar líneas únicas | `uniq -u`|
+| Ordenar líneas de un archivo| `sort archivo`|
+| Contar repeticiones de líneas | `uniq -c`|
+
+
 
 
 
@@ -156,3 +161,30 @@ cat ./maybehere07/.file2
 ### Aplicación en Pentesting
 
 Durante una auditoría de seguridad es frecuente localizar archivos sensibles utilizando atributos como tamaño, permisos, propietario o tipo. Dominar `find` permite reducir considerablemente el tiempo de enumeración y encontrar información relevante de manera eficiente.
+
+
+Bandit Level 8 → Level 9
+Objetivo
+
+La contraseña del siguiente nivel se encuentra almacenada en el archivo data.txt y corresponde a la única línea que aparece una sola vez.
+
+Metodología
+
+Para resolver el reto se ordenaron primero todas las líneas del archivo utilizando sort, ya que uniq solo detecta líneas repetidas si están consecutivas. Posteriormente se empleó uniq -u para mostrar únicamente la línea que aparece una sola vez.
+
+Comando utilizado
+sort data.txt | uniq -u
+Explicación
+sort data.txt: ordena alfabéticamente todas las líneas del archivo.
+|: envía la salida del primer comando al siguiente.
+uniq -u: muestra únicamente las líneas que aparecen una sola vez.
+Resultado
+<contraseña_del_siguiente_nivel>
+
+Sustituye <contraseña_del_siguiente_nivel> por la contraseña que obtuviste al ejecutar el comando.
+
+Conceptos aprendidos
+Uso de sort para ordenar datos.
+Funcionamiento de uniq sobre líneas consecutivas.
+Uso de uniq -u para identificar registros únicos.
+Combinación de comandos mediante tuberías (|).
