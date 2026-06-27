@@ -24,6 +24,8 @@ Durante varios niveles de **OverTheWire Bandit** fue necesario localizar archivo
 | Ordenar líneas de un archivo | `sort archivo` |
 | Mostrar líneas únicas | `uniq -u` |
 | Contar repeticiones de líneas | `uniq -c` |
+| Codificar datos en Base64 | `base64 archivo` |
+| Decodificar datos en Base64 | `base64 -d archivo` |
 ---
 
 # Identificación de archivos por tipo
@@ -267,5 +269,58 @@ El comando `strings` es ampliamente utilizado durante procesos de análisis fore
 ## Conclusión
 
 El comando `strings` permite extraer rápidamente información legible de archivos binarios. Combinado con herramientas como `grep`, facilita la localización de datos específicos durante tareas de análisis y enumeración en sistemas Linux.
+
+
+# Decodificación de datos en Base64 (`base64`)
+
+## Introducción
+
+En este nivel se utilizó por primera vez el comando `base64`, una herramienta que permite codificar y decodificar información utilizando el esquema de codificación Base64. Este formato es ampliamente utilizado para representar datos binarios como texto ASCII, facilitando su transmisión y almacenamiento.
+
+---
+
+## Problema
+
+La contraseña del siguiente nivel se encontraba almacenada en el archivo `data.txt`, el cual contenía información codificada en **Base64**.
+
+## Metodología
+
+Se utilizó el comando `base64` con la opción `-d` (*decode*) para decodificar el contenido del archivo y obtener el texto original.
+
+### Comando utilizado
+
+```bash
+base64 -d data.txt
+```
+
+### Explicación
+
+* `base64`: herramienta para codificar y decodificar datos en Base64.
+* `-d`: decodifica el contenido del archivo.
+* `data.txt`: archivo que contiene la información codificada.
+
+## Resultado
+
+```text
+<contraseña_del_siguiente_nivel>
+```
+
+> Sustituye `<contraseña_del_siguiente_nivel>` por la contraseña obtenida al ejecutar el comando.
+
+## Conceptos aprendidos
+
+* Identificación de datos codificados en Base64.
+* Uso de `base64 -d` para recuperar el contenido original.
+* Diferencia entre **codificación** y **cifrado**.
+* Manipulación de datos codificados desde la terminal.
+
+## Aplicación en Pentesting
+
+Base64 es un formato muy común en aplicaciones web, APIs, tokens, archivos de configuración y protocolos de comunicación. Durante una auditoría de seguridad es frecuente encontrar credenciales, cookies, cabeceras HTTP o datos serializados codificados en Base64, por lo que conocer cómo decodificarlos resulta fundamental para su análisis.
+
+## Conclusión
+
+El comando `base64` permite codificar y decodificar información de manera sencilla. Aunque Base64 puede ocultar el contenido a simple vista, **no proporciona seguridad**, ya que cualquier persona puede recuperar el texto original utilizando la opción `-d`.
+
 
 
