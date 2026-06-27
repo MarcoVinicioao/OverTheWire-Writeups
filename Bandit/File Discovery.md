@@ -42,6 +42,49 @@ cat ./-file07
 * Enumeración eficiente de múltiples archivos.
 * Importancia de validar el contenido antes de abrir archivos de forma indiscriminada.
 
+
+
+
+## Búsqueda de archivos por propietario y tamaño
+
+### Problema
+
+La contraseña se encontraba en un archivo con las siguientes características:
+
+* Propietario: `bandit7`
+* Grupo: `bandit6`
+* Tamaño: **33 bytes**
+
+### Metodología
+
+En lugar de recorrer manualmente todo el sistema de archivos, se utilizó `find` para localizar archivos que cumplieran simultáneamente con los atributos indicados.
+
+### Comando utilizado
+
+```bash
+find / -user bandit7 -group bandit6 -size 33c 2>/dev/null
+```
+
+### Explicación
+
+* `-user bandit7`: busca archivos cuyo propietario sea `bandit7`.
+* `-group bandit6`: filtra por grupo propietario.
+* `-size 33c`: busca archivos de exactamente 33 bytes (`c` significa bytes).
+* `2>/dev/null`: oculta los mensajes de error de permisos denegados.
+
+### Conceptos aprendidos
+
+* Búsqueda avanzada de archivos con `find`.
+* Filtrado por propietario.
+* Filtrado por grupo.
+* Filtrado por tamaño.
+* Redirección de errores estándar (`stderr`) hacia `/dev/null`.
+
+### Aplicación en Pentesting
+
+Durante una auditoría de seguridad es habitual utilizar `find` para localizar archivos sensibles, binarios SUID, claves SSH, archivos de configuración, copias de respaldo y otros recursos de interés. Dominar los filtros de `find` permite realizar una enumeración más rápida y eficiente.
+
+
 ## Conclusión
 
 El comando `file` permite identificar rápidamente el tipo de un archivo sin necesidad de inspeccionar manualmente su contenido, siendo una herramienta útil durante procesos de enumeración en Linux.
