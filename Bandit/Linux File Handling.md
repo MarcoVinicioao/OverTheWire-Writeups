@@ -89,4 +89,58 @@ Ambas opciones permiten que el shell interprete el nombre completo como un únic
 
 # Conclusiones
 
+
+
+
+---
+
+# Archivos ocultos
+
+## Problema
+
+Dentro del directorio `inhere` no se observaban archivos al ejecutar:
+
+```bash
+dir
+```
+
+Sin embargo, el reto indicaba que la contraseña se encontraba almacenada en ese directorio.
+
+## Explicación
+
+En Linux, los archivos cuyo nombre comienza con `.` se consideran **archivos ocultos** y no se muestran con un listado convencional (`ls` o `dir`).
+
+Para visualizar este tipo de archivos es necesario utilizar la opción `-a`.
+
+## Solución
+
+Se listó el contenido del directorio incluyendo los archivos ocultos:
+
+```bash
+ls -lah
+```
+
+La salida mostró el archivo:
+
+```text
+...Hiding-From-You
+```
+
+Posteriormente se leyó su contenido:
+
+```bash
+cat ./...Hiding-From-You
+```
+
+## Conceptos aprendidos
+
+* Archivos ocultos en Linux.
+* Uso de `ls -a` para mostrar archivos ocultos.
+* Uso de `-h` para tamaños legibles por humanos.
+* Uso de rutas relativas (`./`).
+
+## Conclusión
+
+Los archivos ocultos son utilizados frecuentemente por aplicaciones y usuarios para almacenar configuraciones o información que no debe mostrarse en un listado estándar. Durante actividades de enumeración en pentesting es recomendable utilizar opciones como `ls -la` para evitar pasar por alto información relevante.
+
 Estos niveles muestran que el shell no siempre interpreta los nombres de los archivos literalmente. Comprender cómo Bash procesa caracteres especiales, espacios y rutas relativas es fundamental para trabajar correctamente en sistemas Linux y durante actividades de administración de sistemas o pentesting.
