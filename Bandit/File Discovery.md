@@ -6,6 +6,18 @@ Durante varios niveles de OverTheWire Bandit fue necesario localizar archivos ut
 
 ---
 
+| Objetivo                    | Comando                |
+| --------------------------- | ---------------------- |
+| Buscar archivos             | `find . -type f`       |
+| Buscar directorios          | `find . -type d`       |
+| Buscar por tamaño           | `find . -size 1033c`   |
+| Buscar por usuario          | `find . -user usuario` |
+| Buscar por grupo            | `find . -group grupo`  |
+| Buscar por permisos         | `find . -perm -4000`   |
+| Buscar archivos ejecutables | `find . -executable`   |
+| Excluir ejecutables         | `find . ! -executable` |
+
+
 # Identificación de archivos por tipo
 
 ## Problema
